@@ -2,7 +2,7 @@
 
 
 # 0x00 分步加载jsbundle
-将rn-packager打包生成的jsbundle+图片资源统一放到assets目录中，应用程序启动时，复制到files目录，只要保持目录结构不变，js就可以正常访问图片资源。故而，如果需要热更新jsbundle和图片资源时，只需要直接更新files目录中的图片和jsbundle文件即可。
+将rn-packager打包生成的jsbundle+图片资源统一放到assets目录中，应用程序启动时，复制到files目录，只要保持目录结构不变，js就可以正常访问图片资源。故而，如果需要热更新jsbundle和图片资源时，只需要直接更新files目录中的图片和jsbundle文件即可，具体可以看[packager-bundle-split](https://github.com/facebook/react-native/pull/10804)。
 
 * 加载core.android.bundle
 
@@ -74,6 +74,12 @@ files
   |--business.android.bundle
   |--drawable-mdpi/image_liking.png
 ```
+
+同时使用`require`的方式加载图片，
+```javascript
+<Image source={require('./image/liking.png')}/>
+```
+
 如果需要热更新business.android.bundle或者image_liking.png，直接从服务器下载然后替换files/rn目录对应的资源，然后`recreateReactContextInBackground()`重新加载即可。
 
 # 0x01 如何运行?
