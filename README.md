@@ -1,3 +1,5 @@
+# 使用RN-Packager拆分Bundle
+
 使用[rn-packager](https://github.com/react-component/rn-packager)拆分react-native的jsbundle(core.android.bundle + business.android.bundle)，然后在程序启动时分步加载拆分后的bundle，以达到热更新目的。
 
 
